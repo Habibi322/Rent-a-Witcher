@@ -2,6 +2,7 @@
 
 public enum ContextKey
 {
+<<<<<<< HEAD
     // Диалоги (поговорили с зомби)
     Dialog_ZombieTalked = 0,
 
@@ -11,4 +12,6 @@ public enum ContextKey
 
     // Предметы (в инвентаре)
     Item_Boards = 10
+=======
+>>>>>>> main
 }
