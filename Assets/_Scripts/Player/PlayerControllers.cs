@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SignManager signManager;
     [SerializeField] private AardManager aardManager;
 
+    //новое
+    [SerializeField] private PlayerInteraction playerInteraction;
+
     private void Awake()
     {
         playerInput.OnMove += HandleMove;
@@ -15,6 +18,19 @@ public class PlayerController : MonoBehaviour
         playerInput.OnAardMove += HandleAardMove;
         playerInput.OnAardVertical += HandleAardVertical;
         playerInput.OnAardRelease += HandleAardRelease;
+
+        //новое
+        playerInput.OnInteractPressed += HandleInteract;
+    }
+
+    //новое
+    private void HandleInteract()
+    {
+        // ≈сли мы не в режиме јарда, пробуем взаимодействовать
+        if (!aardManager.IsAardActive)
+        {
+            playerInteraction.TryInteract();
+        }
     }
 
     private void HandleMove(Vector2 direction)
@@ -51,5 +67,8 @@ public class PlayerController : MonoBehaviour
         playerInput.OnAardMove -= HandleAardMove;
         playerInput.OnAardVertical -= HandleAardVertical;
         playerInput.OnAardRelease -= HandleAardRelease;
+
+        //новое
+        playerInput.OnInteractPressed -= HandleInteract;
     }
 }

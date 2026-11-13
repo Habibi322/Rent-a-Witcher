@@ -15,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _moveInput;
     private bool _isGrounded;
 
+    //новое
+    [HideInInspector] public bool canMove = true;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -35,6 +38,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Если движение запрещено, обнуляем скорость и выходим
+        if (!canMove)
+        {
+            _rb.linearVelocity = new Vector3(0, _rb.linearVelocity.y, 0);
+            return;
+        }
+
         Vector3 velocity = new Vector3(
             _moveInput.x * moveSpeed,
             _rb.linearVelocity.y,
