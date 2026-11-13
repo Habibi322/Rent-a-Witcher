@@ -4,48 +4,53 @@ using UnityEngine;
 public class NPCInteractable : MonoBehaviour
 {
     [Header("Графы диалогов")]
-    [SerializeField] private DialogueGraph firstDialogueGraph; // Для первого раза
-    [SerializeField] private DialogueGraph secondDialogueGraph; // Для второго раза (после квеста)
+    [SerializeField] private DialogueGraph firstDialogueGraph;  // 0: До квеста
+    [SerializeField] private DialogueGraph secondDialogueGraph; // 1: В процессе
+    [SerializeField] private DialogueGraph thirdDialogueGraph;  // 2: Завершено
 
     [Header("Ссылки")]
     [SerializeField] private DialogueRunner runner;
 
-    [Header("Context Settings")]
-    [Tooltip("Какой ключ выставить в 1 после первого диалога")]
-    [SerializeField] private ContextKey dialogFinishedKey;
+    [Header("Контекст")]
+    [Tooltip("Ключ, который отслеживает стадию диалога/квеста")]
+    [SerializeField] private ContextKey questStageKey = ContextKey.Quest_ZombieFenceStarted;
 
     public void Interact()
     {
         if (runner == null) return;
 
-        // Проверяем, говорили ли мы уже
-        bool hasTalked = false;
-        if (ContextBootstrapper.ContextSystem.TryGetState(dialogFinishedKey, out int value))
+        // Получаем текущую стадию из вашей системы
+        int currentStage = 0;
+        if (ContextBootstrapper.ContextSystem.TryGetState(questStageKey, out int state))
         {
-            hasTalked = (value > 0);
+            currentStage = state;
         }
 
-        if (hasTalked && secondDialogueGraph != null)
+        switch (currentStage)
         {
-            runner.Play(secondDialogueGraph);
-        }
-        else if (!hasTalked && firstDialogueGraph != null)
-        {
-            // Запускаем первый диалог
-            runner.Play(firstDialogueGraph);
-
-            // Записываем в контекст, что поговорили
-            ContextBootstrapper.ContextSystem.TrySetState(dialogFinishedKey, 1);
+            case 0:
+                if (firstDialogueGraph != null)
+                {
+                    runner.Play(firstDialogueGraph);
+                    // После первого разговора переводим стадию на 1 (Задание взято)
+                    ContextBootstrapper.ContextSystem.TrySetState(questStageKey, 1);
+                }
+                break;
+            case 1:
+                if (secondDialogueGraph != null)
+                    runner.Play(secondDialogueGraph);
+                break;
+            case 2:
+                if (thirdDialogueGraph != null)
+                    runner.Play(thirdDialogueGraph);
+                break;
         }
     }
 
-    // Метод для PlayerInteraction, чтобы знать, показывать ли "E"
+    // Метод для PlayerInteraction, чтобы решить, показывать ли "E"
     public bool CanInteract()
     {
-        if (ContextBootstrapper.ContextSystem.TryGetState(dialogFinishedKey, out int value))
-        {
-            return value == 0; // Если 0 - можно, если 1 - уже поговорили
-        }
+        // В этой логике мы разрешаем говорить всегда (пока вы не захотите запретить)
         return true;
     }
 }

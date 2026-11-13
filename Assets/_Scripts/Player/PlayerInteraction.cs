@@ -4,6 +4,8 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
     private NPCInteractable currentNPC;
+    private ItemPickup currentItem;
+
     [SerializeField] private GameObject interactPromptUI;
     [SerializeField] private PlayerMovement playerMovement;
 
@@ -26,6 +28,11 @@ public class PlayerInteraction : MonoBehaviour
             currentNPC.Interact();
             interactPromptUI.SetActive(false);
         }
+        else if (currentItem != null)
+        {
+            currentItem.Interact();
+            interactPromptUI.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,8 +41,15 @@ public class PlayerInteraction : MonoBehaviour
         if (npc != null)
         {
             currentNPC = npc;
-            // Показываем панель, только если NPC разрешает взаимодействие
             interactPromptUI.SetActive(npc.CanInteract());
+            return;
+        }
+
+        ItemPickup item = other.GetComponent<ItemPickup>();
+        if (item != null)
+        {
+            currentItem = item;
+            interactPromptUI.SetActive(true);
         }
     }
 
@@ -45,6 +59,13 @@ public class PlayerInteraction : MonoBehaviour
         if (npc != null && npc == currentNPC)
         {
             currentNPC = null;
+            interactPromptUI.SetActive(false);
+        }
+
+        ItemPickup item = other.GetComponent<ItemPickup>();
+        if (item != null && item == currentItem)
+        {
+            currentItem = null;
             interactPromptUI.SetActive(false);
         }
     }

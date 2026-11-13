@@ -10,7 +10,5 @@ public enum ContextKey
     Quest_ZombieFenceCompleted = 2,
 
     // Предметы (в инвентаре)
-    Item_Boards = 10,
-    Item_Nails = 11,
-    Item_Hammer = 12
+    Item_Boards = 10
 }
