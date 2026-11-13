@@ -4,12 +4,13 @@ public class FenceRepairSpot : MonoBehaviour
 {
     [SerializeField] private GameObject miniGamePanel;
     [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private int boardCount;
 
     public void Interact()
     {
         InventorySystem inv = FindFirstObjectByType<InventorySystem>();
 
-        if (inv != null && inv.HasItem(ContextKey.Item_Boards, 3))
+        if (inv != null && inv.HasItem(ContextKey.Item_Boards, boardCount))
         {
             miniGamePanel.SetActive(true);
             playerMovement.canMove = false; // Блокируем игрока
@@ -30,6 +31,6 @@ public class FenceRepairSpot : MonoBehaviour
 
         // Тратим доски
         InventorySystem inv = FindFirstObjectByType<InventorySystem>();
-        if (inv != null) inv.RemoveItem(ContextKey.Item_Boards, 3);
+        if (inv != null) inv.RemoveItem(ContextKey.Item_Boards, boardCount);
     }
 }

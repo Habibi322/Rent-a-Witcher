@@ -5,6 +5,7 @@ public class PlayerInteraction : MonoBehaviour
 {
     private NPCInteractable currentNPC;
     private ItemPickup currentItem;
+    private FenceRepairSpot currentFence;
 
     [SerializeField] private GameObject interactPromptUI;
     [SerializeField] private PlayerMovement playerMovement;
@@ -33,6 +34,11 @@ public class PlayerInteraction : MonoBehaviour
             currentItem.Interact();
             interactPromptUI.SetActive(false);
         }
+        else if (currentFence != null)
+        {
+            currentFence.Interact();
+            interactPromptUI.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -51,6 +57,14 @@ public class PlayerInteraction : MonoBehaviour
             currentItem = item;
             interactPromptUI.SetActive(true);
         }
+
+        FenceRepairSpot fence = other.GetComponent<FenceRepairSpot>();
+        if (fence != null)
+        {
+            currentFence = fence;
+            interactPromptUI.SetActive(true);
+            return;
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -66,6 +80,13 @@ public class PlayerInteraction : MonoBehaviour
         if (item != null && item == currentItem)
         {
             currentItem = null;
+            interactPromptUI.SetActive(false);
+        }
+
+        FenceRepairSpot fence = other.GetComponent<FenceRepairSpot>();
+        if (fence != null && fence == currentFence)
+        {
+            currentFence = null;
             interactPromptUI.SetActive(false);
         }
     }

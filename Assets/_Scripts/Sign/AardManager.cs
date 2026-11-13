@@ -1,5 +1,4 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using System.Reflection;
 
 public class AardManager : MonoBehaviour
@@ -9,9 +8,17 @@ public class AardManager : MonoBehaviour
     [SerializeField] private float verticalSpeed = 5f;
     [SerializeField] private float playerMassDuringAard = 1000f;
 
-    [Header("Настройки камеры")]
+    [Header("Настройки камеры (Cinemachine)")]
     [SerializeField] private GameObject cinemachineCameraObject;
-    [SerializeField] private float zoomOffsetZ = -3f; 
+    [SerializeField] private float zoomOffsetZ = -3f;
+
+    [Header("Настройки камеры (Физика и Lens Shift)")]
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private Vector2 activateLensShift = Vector2.zero;
+    [SerializeField] private Vector2 deactivateLensShift = new Vector2(0f, -0.6f);
+
+    [Header("Настройки UI")]
+    [SerializeField] private GameObject inventoryUI;
 
     private GameObject currentObject;
     private Rigidbody currentRb;
@@ -24,15 +31,24 @@ public class AardManager : MonoBehaviour
 
     private Component vcam;
     private Component followComponent;
+
     private Transform savedFollow;
     private Transform savedLookAt;
     private Vector3 savedFollowOffset;
+    private bool originalUsePhysicalProperties;
+    private bool wasInventoryActive;
 
     private void Start()
     {
         playerRb = GetComponent<Rigidbody>();
         if (playerRb != null)
             originalPlayerMass = playerRb.mass;
+
+        if (mainCamera == null)
+            mainCamera = Camera.main;
+
+        if (mainCamera != null)
+            originalUsePhysicalProperties = mainCamera.usePhysicalProperties;
 
         FindCinemachineCamera();
     }
@@ -84,15 +100,26 @@ public class AardManager : MonoBehaviour
         if (playerRb != null)
             playerRb.mass = playerMassDuringAard;
 
+        if (inventoryUI != null)
+        {
+            wasInventoryActive = inventoryUI.activeSelf;
+            inventoryUI.SetActive(false);
+        }
+
         if (vcam != null)
         {
             SaveCameraState();
             SetCameraTarget(target.transform);
         }
-
         if (followComponent != null)
         {
             SetFollowOffset(new Vector3(0, 0, zoomOffsetZ));
+        }
+
+        if (mainCamera != null)
+        {
+            mainCamera.usePhysicalProperties = false;
+            mainCamera.lensShift = activateLensShift;
         }
 
         Debug.Log($"Аард активирован на: {target.name}");
@@ -117,16 +144,28 @@ public class AardManager : MonoBehaviour
         {
             SetCameraTarget(savedFollow);
         }
-
         if (followComponent != null)
         {
             SetFollowOffset(savedFollowOffset);
+        }
+
+
+        if (mainCamera != null)
+        {
+            mainCamera.usePhysicalProperties = true;
+            mainCamera.lensShift = deactivateLensShift;
+        }
+
+        if (inventoryUI != null)
+        {
+            inventoryUI.SetActive(wasInventoryActive); 
         }
 
         Debug.Log($"Аард деактивирован: {currentObject?.name}");
         currentObject = null;
         currentRb = null;
     }
+
 
     private void SaveCameraState()
     {
@@ -149,8 +188,6 @@ public class AardManager : MonoBehaviour
             else if (offsetField != null)
                 savedFollowOffset = (Vector3)offsetField.GetValue(followComponent);
         }
-
-        Debug.Log($"Сохранено: Follow={savedFollow?.name}, Offset={savedFollowOffset}");
     }
 
     private void SetCameraTarget(Transform target)
@@ -174,8 +211,6 @@ public class AardManager : MonoBehaviour
             offsetProp.SetValue(followComponent, offset);
         else if (offsetField != null)
             offsetField.SetValue(followComponent, offset);
-
-        Debug.Log($"Follow Offset установлен: {offset}");
     }
 
     public void UpdateAardMovement(Vector2 input)

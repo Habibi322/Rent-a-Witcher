@@ -3,9 +3,15 @@ using UnityEngine.EventSystems;
 
 public class SimpleBoardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    [Header("Настройки детали")]
+    [SerializeField] private string boardId = "DefaultBoard";
+
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
     private Vector2 startPosition;
+    private bool isSnapped = false;
+
+    public string BoardId => boardId;
 
     private void Awake()
     {
@@ -18,13 +24,14 @@ public class SimpleBoardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        canvasGroup.alpha = 0.6f; // Делаем доску полупрозрачной при захвате
-        canvasGroup.blocksRaycasts = false; // Чтобы мышь "проходила" сквозь доску
+        isSnapped = false;
+        canvasGroup.alpha = 0.6f;
+        canvasGroup.blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta; // Двигаем за мышкой
+        rectTransform.anchoredPosition += eventData.delta;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -32,18 +39,62 @@ public class SimpleBoardDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
 
-        // Если доска не прилипла к сокету (сокет не вызвал SnapTo), возвращаем её на место
-        // (Проверка происходит внутри сокета через OnDrop)
+        SimpleSocket target = FindSocketUnderBoard();
+
+        if (target != null)
+        {
+
+            target.Occupy(this);
+            isSnapped = true;
+        }
+        else
+        {
+            ReturnToStart();
+        }
     }
 
-    // Вызывается из сокета, когда доска попадает в цель
-    public void SnapTo(Vector2 position)
+    private SimpleSocket FindSocketUnderBoard()
     {
-        rectTransform.anchoredPosition = position;
-        this.enabled = false; // Отключаем скрипт, чтобы доску нельзя было таскать снова
+        SimpleSocket[] sockets = FindObjectsByType<SimpleSocket>(FindObjectsSortMode.None);
+
+        Vector2 boardScreenPos = RectTransformUtility.WorldToScreenPoint(
+            GetCanvasCamera(), rectTransform.position);
+
+        foreach (var socket in sockets)
+        {
+            if (socket.IsOccupied) continue;
+            if (socket.BoardId != boardId) continue;
+
+            RectTransform socketRect = socket.GetComponent<RectTransform>();
+
+            if (RectTransformUtility.RectangleContainsScreenPoint(
+                    socketRect, boardScreenPos, GetCanvasCamera()))
+            {
+                return socket;
+            }
+        }
+
+        return null;
     }
 
-    // Возврат на место, если не попали в сокет
+    private Camera GetCanvasCamera()
+    {
+        Canvas canvas = GetComponentInParent<Canvas>();
+        if (canvas == null) return null;
+
+        Canvas root = canvas.rootCanvas;
+        return root.renderMode == RenderMode.ScreenSpaceOverlay ? null : root.worldCamera;
+    }
+
+    public void AttachTo(SimpleSocket socket)
+    {
+        transform.SetParent(socket.transform, false);
+        rectTransform.anchoredPosition = Vector2.zero;
+
+        isSnapped = true;
+        this.enabled = false;
+    }
+
     public void ReturnToStart()
     {
         rectTransform.anchoredPosition = startPosition;

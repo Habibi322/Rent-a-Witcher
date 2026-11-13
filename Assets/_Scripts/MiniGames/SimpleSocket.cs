@@ -1,31 +1,21 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class SimpleSocket : MonoBehaviour, IDropHandler
+public class SimpleSocket : MonoBehaviour
 {
-    public bool IsOccupied { get; private set; } = false;
+    [Header("Настройки сокета")]
+    [SerializeField] private string expectedBoardId = "DefaultBoard";
 
-    public void OnDrop(PointerEventData eventData)
+    public bool IsOccupied { get; private set; } = false;
+    public string BoardId => expectedBoardId;
+
+    public void Occupy(SimpleBoardDrag board)
     {
         if (IsOccupied) return;
 
-        // Получаем объект, который перетащили
-        SimpleBoardDrag draggedBoard = eventData.pointerDrag.GetComponent<SimpleBoardDrag>();
+        board.AttachTo(this);
+        IsOccupied = true;
 
-        if (draggedBoard != null)
-        {
-            // Примагничиваем доску к центру сокета
-            draggedBoard.SnapTo(GetComponent<RectTransform>().anchoredPosition);
-            IsOccupied = true;
-
-            CheckIfAllFilled();
-        }
-        else
-        {
-            // Если отпустили не доску, возвращаем её на место
-            SimpleBoardDrag board = eventData.pointerDrag.GetComponent<SimpleBoardDrag>();
-            if (board != null) board.ReturnToStart();
-        }
+        CheckIfAllFilled();
     }
 
     private void CheckIfAllFilled()
@@ -35,13 +25,18 @@ public class SimpleSocket : MonoBehaviour, IDropHandler
 
         foreach (var socket in allSockets)
         {
-            if (!socket.IsOccupied) { allFilled = false; break; }
+            if (!socket.IsOccupied)
+            {
+                allFilled = false;
+                break;
+            }
         }
 
         if (allFilled)
         {
-            Debug.Log("Все доски на месте!");
-            FindFirstObjectByType<FenceRepairSpot>().OnMinigameCompleted();
+            Debug.Log("Все доски на своих местах!");
+            FenceRepairSpot spot = FindFirstObjectByType<FenceRepairSpot>();
+            if (spot != null) spot.OnMinigameCompleted();
         }
     }
 }
