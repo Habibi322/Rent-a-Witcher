@@ -1,4 +1,4 @@
-public enum ContextKey
+public enum ContextKey1
 {
     // Диалоги
     Dialog_ZombieTalked = 0, // Поговорили с зомби
