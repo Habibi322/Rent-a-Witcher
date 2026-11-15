@@ -11,7 +11,6 @@ public class ArrowManager : MonoBehaviour
 
         if (ContextBootstrapper.ContextSystem != null)
         {
-            // Подписываемся на изменение стадии квеста
             ContextBootstrapper.ContextSystem.SubscribeToContext(questKey, OnQuestStageChanged, true);
         }
     }
@@ -26,10 +25,12 @@ public class ArrowManager : MonoBehaviour
 
     private void OnQuestStageChanged(int stage)
     {
-        // Стрелка появляется, только если квест выполнен (стадия 2)
-        if (arrowUI != null)
-        {
-            arrowUI.SetActive(stage == 2);
-        }
+        if (arrowUI != null) arrowUI.SetActive(stage == 2);
+    }
+
+    // НОВЫЙ МЕТОД: Включает стрелку вручную
+    public void ShowArrow()
+    {
+        if (arrowUI != null) arrowUI.SetActive(true);
     }
 }

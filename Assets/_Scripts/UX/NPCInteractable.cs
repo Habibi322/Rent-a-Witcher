@@ -11,15 +11,35 @@ public class NPCInteractable : MonoBehaviour
     [Header("Ссылки")]
     [SerializeField] private DialogueRunner runner;
 
+    [Header("Стрелка (только для этого НПС)")]
+    [SerializeField] private ArrowManager arrowManager; // <--- НОВОЕ
+
     [Header("Контекст")]
-    [Tooltip("Ключ, который отслеживает стадию диалога/квеста")]
     [SerializeField] private ContextKey questStageKey = ContextKey.Quest_ZombieFenceStarted;
+
+    private DialogueGraph _currentGraph; // Запоминаем, какой граф сейчас играет
+
+    private void Start()
+    {
+        // Подписываемся на окончание диалога
+        if (runner != null)
+        {
+            runner.OnDialogueFinished.AddListener(OnDialogueFinished);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (runner != null)
+        {
+            runner.OnDialogueFinished.RemoveListener(OnDialogueFinished);
+        }
+    }
 
     public void Interact()
     {
         if (runner == null) return;
 
-        // Получаем текущую стадию из вашей системы
         int currentStage = 0;
         if (ContextBootstrapper.ContextSystem.TryGetState(questStageKey, out int state))
         {
@@ -31,26 +51,49 @@ public class NPCInteractable : MonoBehaviour
             case 0:
                 if (firstDialogueGraph != null)
                 {
+                    _currentGraph = firstDialogueGraph; // Запоминаем граф
                     runner.Play(firstDialogueGraph);
-                    // После первого разговора переводим стадию на 1 (Задание взято)
                     ContextBootstrapper.ContextSystem.TrySetState(questStageKey, 1);
                 }
                 break;
             case 1:
                 if (secondDialogueGraph != null)
+                {
+                    _currentGraph = secondDialogueGraph;
                     runner.Play(secondDialogueGraph);
+                }
                 break;
             case 2:
                 if (thirdDialogueGraph != null)
+                {
+                    _currentGraph = thirdDialogueGraph; // Запоминаем третий граф
                     runner.Play(thirdDialogueGraph);
+                }
                 break;
         }
     }
 
-    // Метод для PlayerInteraction, чтобы решить, показывать ли "E"
+    // Вызывается, когда ЛЮБОЙ диалог завершается
+    private void OnDialogueFinished()
+    {
+        // Проверяем, что завершился именно ТРЕТИЙ диалог
+        if (_currentGraph == thirdDialogueGraph && thirdDialogueGraph != null)
+        {
+            Debug.Log("Третий диалог завершен! Включаем стрелку.");
+
+            // Включаем стрелку
+            if (arrowManager != null)
+            {
+                arrowManager.ShowArrow();
+            }
+
+            // Чтобы не сработало дважды, можно отписаться
+            // runner.OnDialogueFinished.RemoveListener(OnDialogueFinished);
+        }
+    }
+
     public bool CanInteract()
     {
-        // В этой логике мы разрешаем говорить всегда (пока вы не захотите запретить)
         return true;
     }
 }
