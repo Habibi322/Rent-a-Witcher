@@ -17,7 +17,11 @@ MonoBehaviour:
     InitialValue: 0
   - Key: 1
     InitialValue: 0
-  - Key: 2
-    InitialValue: 0
   - Key: 10
+    InitialValue: 0
+  - Key: 20
+    InitialValue: 0
+  - Key: 21
+    InitialValue: 0
+  - Key: 22
     InitialValue: 0
