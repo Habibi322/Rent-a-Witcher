@@ -8,6 +8,7 @@ public class ButtonManager : MonoBehaviour
     [Header("Панели")]
     [SerializeField] private GameObject mainPanel;
     [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private GameObject controlsPanel;
 
     [Header("Настройки")]
     [SerializeField] private string gameplaySceneName = "GameScene";
@@ -20,6 +21,7 @@ public class ButtonManager : MonoBehaviour
     {
         mainPanel.SetActive(true);
         settingsPanel.SetActive(false);
+        controlsPanel.SetActive(false);
     }
 
     public void OnPlayClicked()
@@ -37,8 +39,9 @@ public class ButtonManager : MonoBehaviour
 
     public void OnSettingsClicked()
     {
-        mainPanel.SetActive(false);
+        mainPanel.SetActive(true);
         settingsPanel.SetActive(true);
+        controlsPanel.SetActive(false);
 
         LoadAllSliders();
     }
@@ -56,6 +59,7 @@ public class ButtonManager : MonoBehaviour
     {
         settingsPanel.SetActive(false);
         mainPanel.SetActive(true);
+        controlsPanel.SetActive(false);
     }
 
     public void OnConfirmClicked()
@@ -89,5 +93,16 @@ public class ButtonManager : MonoBehaviour
 
             slider.SetValueWithoutNotify(saveValue);
         }
+    }
+    public void OnControlsClicked()
+    {
+        // Скрываем главную панель
+        if (mainPanel != null) mainPanel.SetActive(true);
+
+        // Показываем панель настроек (управления)
+        if (controlsPanel != null) controlsPanel.SetActive(true);
+
+        // Загружаем сохраненные значения слайдеров (если они есть)
+        LoadAllSliders();
     }
 }
