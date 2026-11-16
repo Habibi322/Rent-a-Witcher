@@ -556,11 +556,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
---- !u!212 &734515258 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 2622455441875294413, guid: a7b5fcf12abba5648b02b94655e29353, type: 3}
-  m_PrefabInstance: {fileID: 6375708912213774514}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &760457674 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5894385875526595973, guid: 61dcc852d56a71f4ab8f74c902df77d0, type: 3}
@@ -961,6 +956,18 @@ PrefabInstance:
       propertyPath: runner
       value: 
       objectReference: {fileID: 333130294}
+    - target: {fileID: 773130230836563479, guid: a7b5fcf12abba5648b02b94655e29353, type: 3}
+      propertyPath: parentRenderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 773130230836563479, guid: a7b5fcf12abba5648b02b94655e29353, type: 3}
+      propertyPath: 'zombieRenderers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 773130230836563479, guid: a7b5fcf12abba5648b02b94655e29353, type: 3}
+      propertyPath: 'zombieRenderers.Array.data[1]'
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 911618824442961439, guid: a7b5fcf12abba5648b02b94655e29353, type: 3}
       propertyPath: runner
       value: 
@@ -1548,7 +1555,7 @@ Transform:
   m_GameObject: {fileID: 4439609373588702973}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.8, y: 5.07, z: -17.470001}
+  m_LocalPosition: {x: -14.9, y: 5.07, z: -17.470001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5135,7 +5142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6788811873807632945, guid: 30fd186aa72812046bf1f1b3b6d675b1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.8
+      value: -14.9
       objectReference: {fileID: 0}
     - target: {fileID: 6788811873807632945, guid: 30fd186aa72812046bf1f1b3b6d675b1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5347,7 +5354,7 @@ Transform:
   m_GameObject: {fileID: 4626924429526338532}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.8, y: 5.07, z: -17.470001}
+  m_LocalPosition: {x: -14.9, y: 5.07, z: -17.470001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5573,6 +5580,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2120129401}
+    - target: {fileID: 38446783674927169, guid: 102c4e1d8492334428ddc0ff69dad590, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 493838837930701749, guid: 102c4e1d8492334428ddc0ff69dad590, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -5830,6 +5841,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 102c4e1d8492334428ddc0ff69dad590, type: 3}
+--- !u!1 &4850359443659394887 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 38446783674927169, guid: 102c4e1d8492334428ddc0ff69dad590, type: 3}
+  m_PrefabInstance: {fileID: 4850359443659394886}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4989357562747378238
 GameObject:
   m_ObjectHideFlags: 0
@@ -6216,10 +6232,6 @@ PrefabInstance:
       propertyPath: runner
       value: 
       objectReference: {fileID: 333130294}
-    - target: {fileID: 773130230836563479, guid: a7b5fcf12abba5648b02b94655e29353, type: 3}
-      propertyPath: parentRenderer
-      value: 
-      objectReference: {fileID: 734515258}
     - target: {fileID: 1576991369469852200, guid: a7b5fcf12abba5648b02b94655e29353, type: 3}
       propertyPath: m_Name
       value: === Zombi NPC ===
@@ -11797,6 +11809,26 @@ PrefabInstance:
       propertyPath: m_SpriteSortPoint
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2917457100767614869, guid: 0e67fb7388458ac4da4920a7141cebff, type: 3}
+      propertyPath: m_Size.x
+      value: 21.10078
+      objectReference: {fileID: 0}
+    - target: {fileID: 2917457100767614869, guid: 0e67fb7388458ac4da4920a7141cebff, type: 3}
+      propertyPath: m_Size.z
+      value: 4.015853
+      objectReference: {fileID: 0}
+    - target: {fileID: 2917457100767614869, guid: 0e67fb7388458ac4da4920a7141cebff, type: 3}
+      propertyPath: m_Center.x
+      value: -0.36089182
+      objectReference: {fileID: 0}
+    - target: {fileID: 2917457100767614869, guid: 0e67fb7388458ac4da4920a7141cebff, type: 3}
+      propertyPath: m_Center.y
+      value: 5.110224
+      objectReference: {fileID: 0}
+    - target: {fileID: 2917457100767614869, guid: 0e67fb7388458ac4da4920a7141cebff, type: 3}
+      propertyPath: m_Center.z
+      value: -0.4879266
+      objectReference: {fileID: 0}
     - target: {fileID: 3020165127871667563, guid: 0e67fb7388458ac4da4920a7141cebff, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -11897,6 +11929,18 @@ PrefabInstance:
       propertyPath: interactionText
       value: 
       objectReference: {fileID: 1082781111}
+    - target: {fileID: 5826295263286939741, guid: 0e67fb7388458ac4da4920a7141cebff, type: 3}
+      propertyPath: qPromptUI
+      value: 
+      objectReference: {fileID: 4850359443659394887}
+    - target: {fileID: 5976474594882635810, guid: 0e67fb7388458ac4da4920a7141cebff, type: 3}
+      propertyPath: m_Size.z
+      value: 3.8746746
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976474594882635810, guid: 0e67fb7388458ac4da4920a7141cebff, type: 3}
+      propertyPath: m_Center.z
+      value: 1.449954
+      objectReference: {fileID: 0}
     - target: {fileID: 7368772366385871077, guid: 0e67fb7388458ac4da4920a7141cebff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.35311
@@ -12012,6 +12056,22 @@ PrefabInstance:
     - target: {fileID: 8328646485827997219, guid: 0e67fb7388458ac4da4920a7141cebff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: -23.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603316934264129314, guid: 0e67fb7388458ac4da4920a7141cebff, type: 3}
+      propertyPath: qPromptUI
+      value: 
+      objectReference: {fileID: 4850359443659394887}
+    - target: {fileID: 9136039740057229895, guid: 0e67fb7388458ac4da4920a7141cebff, type: 3}
+      propertyPath: m_Size.y
+      value: 5.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136039740057229895, guid: 0e67fb7388458ac4da4920a7141cebff, type: 3}
+      propertyPath: m_Size.z
+      value: 5.1610107
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136039740057229895, guid: 0e67fb7388458ac4da4920a7141cebff, type: 3}
+      propertyPath: m_Center.z
+      value: -0.40050465
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

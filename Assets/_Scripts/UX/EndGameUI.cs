@@ -14,11 +14,32 @@ public class EndGameUI : MonoBehaviour
     [SerializeField] private string mainMenuSceneName = "MainMenu";
 
     [Tooltip("Задержка перед загрузкой меню (в секундах)")]
-    [SerializeField] private float delayBeforeMenu = 3f;
+    [SerializeField] private float delayBeforeMenu = 5f;
+
+    [Tooltip("Время плавного появления (в секундах)")]
+    [SerializeField] private float fadeDuration = 2f;
+
+    private CanvasGroup panelCanvasGroup;
+    private CanvasGroup textCanvasGroup;
 
     private void Start()
     {
-        if (endGamePanel != null) endGamePanel.SetActive(false);
+        if (endGamePanel != null)
+        {
+            endGamePanel.SetActive(false);
+            panelCanvasGroup = endGamePanel.GetComponent<CanvasGroup>();
+            if (panelCanvasGroup == null)
+                panelCanvasGroup = endGamePanel.AddComponent<CanvasGroup>();
+            panelCanvasGroup.alpha = 0f;
+        }
+
+        if (endGameText != null)
+        {
+            textCanvasGroup = endGameText.GetComponent<CanvasGroup>();
+            if (textCanvasGroup == null)
+                textCanvasGroup = endGameText.gameObject.AddComponent<CanvasGroup>();
+            textCanvasGroup.alpha = 0f;
+        }
 
         if (ContextBootstrapper.ContextSystem != null)
         {
@@ -36,29 +57,61 @@ public class EndGameUI : MonoBehaviour
 
     private void OnQuestStageChanged(int stage)
     {
-        // Когда стадия достигает 4 (финал)
         if (stage >= 4)
         {
-            if (endGamePanel != null) endGamePanel.SetActive(true);
-            if (endGameText != null)
-            {
-                endGameText.text = "Спасибо, что сыграли в нашу игру.\nПродолжение будет... возможно... мы постараемся :3";
-            }
-
-            // Запускаем корутину для перехода в меню
-            StartCoroutine(ReturnToMenuRoutine());
+            StartCoroutine(ShowEndGameRoutine());
         }
     }
 
-    private IEnumerator ReturnToMenuRoutine()
+    private IEnumerator ShowEndGameRoutine()
     {
-        // Ждем, пока игрок прочитает текст
+        // 1. Включаем панель (но она прозрачная)
+        if (endGamePanel != null)
+            endGamePanel.SetActive(true);
+
+        // 2. Плавно показываем текст
+        if (endGameText != null)
+        {
+            endGameText.text = "Спасибо, что сыграли в нашу игру.\nПродолжение будет... возможно... мы постараемся :3";
+        }
+
+        // 3. Плавное появление панели (затемнение фона)
+        float elapsed = 0f;
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            float alpha = Mathf.Clamp01(elapsed / fadeDuration);
+
+            if (panelCanvasGroup != null)
+                panelCanvasGroup.alpha = alpha;
+
+            yield return null;
+        }
+        if (panelCanvasGroup != null)
+            panelCanvasGroup.alpha = 1f;
+
+        // 4. Плавное появление текста (с небольшой задержкой)
+        yield return new WaitForSeconds(0.5f);
+
+        elapsed = 0f;
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            float alpha = Mathf.Clamp01(elapsed / fadeDuration);
+
+            if (textCanvasGroup != null)
+                textCanvasGroup.alpha = alpha;
+
+            yield return null;
+        }
+        if (textCanvasGroup != null)
+            textCanvasGroup.alpha = 1f;
+
+        // 5. Ждем, пока игрок прочитает текст
         yield return new WaitForSeconds(delayBeforeMenu);
 
-        // Возвращаем время в норму (на случай, если была пауза)
+        // 6. Возвращаем время в норму и загружаем меню
         Time.timeScale = 1f;
-
-        // Загружаем главное меню
         SceneManager.LoadScene(mainMenuSceneName);
     }
 }
