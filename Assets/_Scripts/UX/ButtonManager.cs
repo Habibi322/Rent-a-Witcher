@@ -1,4 +1,4 @@
-using UnityEditor.Rendering;
+//using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -48,11 +48,7 @@ public class ButtonManager : MonoBehaviour
 
     public void OnQuitClicked()
     {
-        #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-        #else
         Application.Quit();
-        #endif
     }
 
     public void OnBackToMenuClicked()
