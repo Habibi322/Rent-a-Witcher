@@ -198,7 +198,7 @@ BoxCollider:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147887301915765811}
+  m_GameObject: {fileID: 501135887}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -514,6 +514,11 @@ MonoBehaviour:
   cooldown: 1
   aardParticles: {fileID: 0}
   aardManager: {fileID: 0}
+--- !u!1 &501135887 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3120871864977643302, guid: b16cacedde16e6b4986bec26d00ef664, type: 3}
+  m_PrefabInstance: {fileID: 147887301915765809}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &534400921 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5123189845586574833, guid: 61dcc852d56a71f4ab8f74c902df77d0, type: 3}
@@ -5664,11 +5669,6 @@ PrefabInstance:
 --- !u!4 &147887301915765810 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3525765331863734664, guid: b16cacedde16e6b4986bec26d00ef664, type: 3}
-  m_PrefabInstance: {fileID: 147887301915765809}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &147887301915765811 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3120871864977643302, guid: b16cacedde16e6b4986bec26d00ef664, type: 3}
   m_PrefabInstance: {fileID: 147887301915765809}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &147887301915765812 stripped
@@ -14503,7 +14503,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3328392651146006417, guid: 0e67fb7388458ac4da4920a7141cebff, type: 3}
       propertyPath: amount
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4018586954567689930, guid: 0e67fb7388458ac4da4920a7141cebff, type: 3}
       propertyPath: m_Sprite
