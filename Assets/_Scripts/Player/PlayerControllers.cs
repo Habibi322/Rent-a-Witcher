@@ -1,4 +1,4 @@
-using UnityEngine;
+п»їusing UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -6,8 +6,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private SignManager signManager;
     [SerializeField] private AardManager aardManager;
+    [SerializeField] private PlayerAnimator _animatorController;
 
-    //новое
+    //РЅРѕРІРѕРµ
     [SerializeField] private PlayerInteraction playerInteraction;
 
     private void Awake()
@@ -19,14 +20,14 @@ public class PlayerController : MonoBehaviour
         playerInput.OnAardVertical += HandleAardVertical;
         playerInput.OnAardRelease += HandleAardRelease;
 
-        //новое
+        //РЅРѕРІРѕРµ
         playerInput.OnInteractPressed += HandleInteract;
     }
 
-    //новое
+    //РЅРѕРІРѕРµ
     private void HandleInteract()
     {
-        // Если мы не в режиме Аарда, пробуем взаимодействовать
+        // Р•СЃР»Рё РјС‹ РЅРµ РІ СЂРµР¶РёРјРµ РђР°СЂРґР°, РїСЂРѕР±СѓРµРј РІР·Р°РёРјРѕРґРµР№СЃС‚РІРѕРІР°С‚СЊ
         if (!aardManager.IsAardActive)
         {
             playerInteraction.TryInteract();
@@ -36,7 +37,10 @@ public class PlayerController : MonoBehaviour
     private void HandleMove(Vector2 direction)
     {
         if (!aardManager.IsAardActive)
+        {
             playerMovement.SetMoveInput(direction);
+            _animatorController.UpdateInputDirection(direction);
+        }
     }
 
     private void HandleJump()
@@ -48,16 +52,28 @@ public class PlayerController : MonoBehaviour
     private void HandleSign()
     {
         if (aardManager.IsAardActive)
+        {
             aardManager.DeactivateAard();
+            _animatorController.DeactivateAard();
+        }
         else
-            signManager.TryUseSign();
+        {
+            if (signManager.TryUseSign())
+            {
+                _animatorController.ActivateAard();
+            }
+        }
     }
 
     private void HandleAardMove(Vector2 direction) => aardManager.UpdateAardMovement(direction);
 
     private void HandleAardVertical(float input) => aardManager.UpdateAardVertical(input);
 
-    private void HandleAardRelease() => aardManager.DeactivateAard();
+    private void HandleAardRelease() 
+    { 
+        aardManager.DeactivateAard();
+        _animatorController.DeactivateAard();
+    }
 
     private void OnDestroy()
     {
@@ -68,7 +84,7 @@ public class PlayerController : MonoBehaviour
         playerInput.OnAardVertical -= HandleAardVertical;
         playerInput.OnAardRelease -= HandleAardRelease;
 
-        //новое
+        //РЅРѕРІРѕРµ
         playerInput.OnInteractPressed -= HandleInteract;
     }
 }

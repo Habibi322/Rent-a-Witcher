@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 
 public class SignManager : MonoBehaviour
@@ -19,7 +19,7 @@ public class SignManager : MonoBehaviour
         objectsInRange.Remove(other.gameObject);
     }
 
-    public void TryUseSign()
+    public bool TryUseSign()
     {
         objectsInRange.RemoveAll(item => item == null);
 
@@ -32,19 +32,22 @@ public class SignManager : MonoBehaviour
                     if (sign is AardSign aardSign)
                     {
                         aardSign.ActivateAard(target);
+                        return true;
                     }
                     else if (sign is IgniSign igniSign)
                     {
                         igniSign.ActivateOnTarget(target);
+                        return true;
                     }
                     else
                     {
                         sign.Activate();
                     }
 
-                    return;
+                    return false;
                 }
             }
         }
+        return false;
     }
 }
