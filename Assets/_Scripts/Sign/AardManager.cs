@@ -81,6 +81,13 @@ public class AardManager : MonoBehaviour
         if (isAardActive) return;
 
         currentObject = target;
+        
+        LizardInteractable lizard = target.GetComponent<LizardInteractable>();
+        if (lizard != null)
+        {
+            lizard.OnAardGrabbed();
+        }
+
         currentRb = target.GetComponent<Rigidbody>();
 
         if (currentRb == null)

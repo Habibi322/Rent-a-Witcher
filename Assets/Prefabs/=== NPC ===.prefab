@@ -167,6 +167,8 @@ MonoBehaviour:
   thirdDialogueGraph: {fileID: 11400000, guid: 33c3d2ea815471842b8b87179936b1b7, type: 2}
   runner: {fileID: 0}
   arrowManager: {fileID: 0}
+  zombieRenderers: []
+  parentRenderer: {fileID: 0}
   questStageKey: 1
 --- !u!1 &3648385780212829423
 GameObject:
@@ -451,6 +453,9 @@ GameObject:
   m_Component:
   - component: {fileID: 509825035542562895}
   - component: {fileID: 6097355877590679224}
+  - component: {fileID: 762244612423284834}
+  - component: {fileID: 8295296912923233897}
+  - component: {fileID: 7317441805790178411}
   m_Layer: 0
   m_Name: Upir (3)
   m_TagString: Untagged
@@ -532,3 +537,67 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 1
+--- !u!65 &762244612423284834
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6054438714874447950}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 8.065337, y: 11.121583, z: 2.912464}
+  m_Center: {x: 1.1839979, y: 5.249104, z: 0.1189796}
+--- !u!65 &8295296912923233897
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6054438714874447950}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.696976, y: 9.368587, z: 5.681833}
+  m_Center: {x: 0.7921244, y: 4.16462, z: 0.21884675}
+--- !u!114 &7317441805790178411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6054438714874447950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ae6e19aa396bdc46aa3ccd41483575f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MultiNPCDialogue
+  uniqueDialogueGraph: {fileID: 11400000, guid: 8457fe1c0fa356c46ab3f69af28afc7e, type: 2}
+  fallbackDialogueGraph: {fileID: 11400000, guid: b0dbafd6475ead343b0bef9b7680f462, type: 2}
+  fourthNpcAfterRepairGraph: {fileID: 11400000, guid: 24c32509f2ddb0144920f8142a08c804, type: 2}
+  otherNpcAfterRepairGraph: {fileID: 0}
+  runner: {fileID: 0}
+  arrowManager: {fileID: 0}
+  myUniqueKey: 32
+  myOrderIndex: 3
+  previousNpcKey: 31
+  pipesQuestStageKey: 40

@@ -23,5 +23,11 @@ MonoBehaviour:
     InitialValue: 0
   - Key: 21
     InitialValue: 0
-  - Key: 22
+  - Key: 30
+    InitialValue: 0
+  - Key: 31
+    InitialValue: 0
+  - Key: 32
+    InitialValue: 0
+  - Key: 40
     InitialValue: 0

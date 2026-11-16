@@ -953,6 +953,7 @@ MonoBehaviour:
   mainPanel: {fileID: 374707264693625259}
   settingsPanel: {fileID: 1467395555}
   gameplaySceneName: Main_Game
+  contextDefaults: {fileID: 11400000, guid: c03466678b93a9a42b569028341811ab, type: 2}
 --- !u!4 &631522107
 Transform:
   m_ObjectHideFlags: 0

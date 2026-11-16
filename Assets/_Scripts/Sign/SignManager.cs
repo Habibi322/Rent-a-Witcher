@@ -21,6 +21,7 @@ public class SignManager : MonoBehaviour
 
     public void TryUseSign()
     {
+        objectsInRange.RemoveAll(item => item == null);
 
         foreach (GameObject target in objectsInRange)
         {

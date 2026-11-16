@@ -11,5 +11,13 @@ public enum ContextKey
 
     // Предметы (в инвентаре)
     Item_Boards = 10,
-    Item_NewBiomeItem = 22
+    Item_NewBiomeItem = 22,
+
+        // Новый биом: 4 NPC
+    Quest_NewBiomeTalked_1 = 30,
+    Quest_NewBiomeTalked_2 = 31,
+    Quest_NewBiomeTalked_3 = 32,
+
+    // Стадии квеста с трубами
+    Quest_PipesStage = 40
 }

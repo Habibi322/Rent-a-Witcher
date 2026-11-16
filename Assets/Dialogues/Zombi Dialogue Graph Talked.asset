@@ -45,8 +45,8 @@ MonoBehaviour:
       _dynamic: 0
   nodeId: a0d02bc1e4ab451cbf79d2a0d4b7fa02
   input: 0
-  speakerName: GG
-  inlineText: "\u0432\u0431\u0430\u0431\u0432\u0430\u0431\u0430\u0431\u0432\u0431\u0432\u0430\u0431\u0430\u0432"
+  speakerName: "\u0413\u0435\u0440\u043E\u0439"
+  inlineText: ......
   tags: []
   speedMultiplier: 1
   eventKey: 
@@ -131,8 +131,10 @@ MonoBehaviour:
       _dynamic: 0
   nodeId: a0d02bc1e4ab451cbf79d2a0d4b7fa02
   input: 0
-  speakerName: Zombi_2
-  inlineText: "\u0432\u0431\u0430\u0431\u0432\u0430\u0431\u0430\u0431\u0432\u0431\u0432\u0430\u0431\u0430\u0432"
+  speakerName: "\u0417\u0440\u044F\u0447\u0438\u0439 \u0437\u043E\u043C\u0431\u0438"
+  inlineText: "\u0413\u043E\u0432\u043E\u0440\u0438\u043B \u0436\u0435 \u0442\u0435\u0431\u0435!
+    \u041D\u0435 \u043D\u0430\u0439\u0434\u0451\u0448\u044C \u0442\u044B \u0441\u0435\u0431\u0435
+    \u0433\u043B\u0430\u0437\u0430 \u0446\u0432\u0435\u0442\u043E\u043C \u043C\u0443\u0445\u043E\u043C\u043E\u0440\u0430."
   tags: []
   speedMultiplier: 1
   eventKey: 
@@ -177,7 +179,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: input
-        node: {fileID: -3804413601143545323}
+        node: {fileID: -3903000901435916875}
         reroutePoints: []
       _direction: 1
       _connectionType: 0
@@ -185,8 +187,9 @@ MonoBehaviour:
       _dynamic: 0
   nodeId: a0d02bc1e4ab451cbf79d2a0d4b7fa02
   input: 0
-  speakerName: GG
-  inlineText: "\u0432\u0431\u0430\u0431\u0432\u0430\u0431\u0430\u0431\u0432\u0431\u0432\u0430\u0431\u0430\u0432"
+  speakerName: "\u0413\u0435\u0440\u043E\u0439"
+  inlineText: "\u041F\u043E\u0436\u0430\u043B\u0443\u0439, \u043F\u043E\u0439\u0434\u0443
+    \u0434\u0430\u043B\u044C\u0448\u0435..."
   tags: []
   speedMultiplier: 1
   eventKey: 
@@ -219,7 +222,7 @@ MonoBehaviour:
         PublicKeyToken=b77a5c561934e089
       connections:
       - fieldName: next
-        node: {fileID: 7243834252173549939}
+        node: {fileID: -4396038631440904361}
         reroutePoints: []
       _direction: 0
       _connectionType: 0
@@ -248,60 +251,6 @@ MonoBehaviour:
     BoolValue: 1
     StringValue: 
   next: 0
---- !u!114 &-3804413601143545323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bc8707fcce6dfe488bd412c8f607895, type: 3}
-  m_Name: Line
-  m_EditorClassIdentifier: SnogDialogueRuntime::SnogDialogue.Runtime.LineNode
-  graph: {fileID: 11400000}
-  position: {x: 1224, y: -504}
-  ports:
-    keys:
-    - input
-    - next
-    values:
-    - _fieldName: input
-      _node: {fileID: -3804413601143545323}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: next
-        node: {fileID: -4396038631440904361}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: next
-      _node: {fileID: -3804413601143545323}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: input
-        node: {fileID: 7243834252173549939}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  nodeId: a0d02bc1e4ab451cbf79d2a0d4b7fa02
-  input: 0
-  speakerName: Zombi_2
-  inlineText: "\u0432\u0431\u0430\u0431\u0432\u0430\u0431\u0430\u0431\u0432\u0431\u0432\u0430\u0431\u0430\u0432"
-  tags: []
-  speedMultiplier: 1
-  eventKey: 
-  startEventDelay: 0
-  autoAdvance: 0
-  autoAdvanceDelay: 1.5
-  next: 0
 --- !u!114 &-3138046592640004976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,7 +264,7 @@ MonoBehaviour:
   m_Name: Start
   m_EditorClassIdentifier: SnogDialogueRuntime::SnogDialogue.Runtime.StartNode
   graph: {fileID: 11400000}
-  position: {x: -760, y: -712}
+  position: {x: -1048, y: -696}
   ports:
     keys:
     - next
@@ -379,8 +328,9 @@ MonoBehaviour:
       _dynamic: 0
   nodeId: a3bfed37a30240fe9d3d20fa56816536
   input: 0
-  speakerName: "\u0417\u043E\u043C\u0431\u0438 \u0431\u0435\u0437 \u0431\u0430\u0449\u043A\u0430"
-  inlineText: "\u0430\u0431\u0430\u0431\u0432\u0431\u0430\u0431\u0430\u0432"
+  speakerName: "\u0417\u0440\u044F\u0447\u0438\u0439 \u0437\u043E\u043C\u0431\u0438"
+  inlineText: "\u0418 \u043A\u043E\u0433\u0434\u0430 \u0442\u044B \u0441\u0435\u0431\u0435
+    \u043D\u043E\u0432\u044B\u0435 \u0433\u043B\u0430\u0437\u0430 \u043D\u0430\u0439\u0434\u0451\u0448\u044C?"
   tags: []
   speedMultiplier: 1
   eventKey: 
@@ -433,8 +383,9 @@ MonoBehaviour:
       _dynamic: 0
   nodeId: a3bfed37a30240fe9d3d20fa56816536
   input: 0
-  speakerName: Zombi_1
-  inlineText: "\u0430\u0431\u0430\u0431\u0432\u0431\u0430\u0431\u0430\u0432"
+  speakerName: "\u0421\u043B\u0435\u043F\u043E\u0439 \u0437\u043E\u043C\u0431\u0438"
+  inlineText: "\u0412\u043E\u0442 \u043D\u0430\u0439\u0434\u0443, \u0438 \u0437\u0430\u0432\u0438\u0434\u043E\u0432\u0430\u0442\u044C
+    \u0431\u0443\u0434\u0435\u0448\u044C."
   tags: []
   speedMultiplier: 1
   eventKey: 
@@ -462,8 +413,6 @@ MonoBehaviour:
   - {fileID: -1900975723583663388}
   - {fileID: -7396097528200192192}
   - {fileID: -4396038631440904361}
-  - {fileID: -3804413601143545323}
-  - {fileID: 7243834252173549939}
   - {fileID: -3903000901435916875}
   - {fileID: -9076542987896982221}
   graphId: fdcc54130c714ba4a125a2608b9987a5
@@ -512,62 +461,9 @@ MonoBehaviour:
       _dynamic: 0
   nodeId: a0d02bc1e4ab451cbf79d2a0d4b7fa02
   input: 0
-  speakerName: Zombi_2
-  inlineText: "\u0432\u0431\u0430\u0431\u0432\u0430\u0431\u0430\u0431\u0432\u0431\u0432\u0430\u0431\u0430\u0432"
-  tags: []
-  speedMultiplier: 1
-  eventKey: 
-  startEventDelay: 0
-  autoAdvance: 0
-  autoAdvanceDelay: 1.5
-  next: 0
---- !u!114 &7243834252173549939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bc8707fcce6dfe488bd412c8f607895, type: 3}
-  m_Name: Line
-  m_EditorClassIdentifier: SnogDialogueRuntime::SnogDialogue.Runtime.LineNode
-  graph: {fileID: 11400000}
-  position: {x: 1544, y: -504}
-  ports:
-    keys:
-    - input
-    - next
-    values:
-    - _fieldName: input
-      _node: {fileID: 7243834252173549939}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: next
-        node: {fileID: -3804413601143545323}
-        reroutePoints: []
-      _direction: 0
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-    - _fieldName: next
-      _node: {fileID: 7243834252173549939}
-      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
-        PublicKeyToken=b77a5c561934e089
-      connections:
-      - fieldName: input
-        node: {fileID: -3903000901435916875}
-        reroutePoints: []
-      _direction: 1
-      _connectionType: 0
-      _typeConstraint: 0
-      _dynamic: 0
-  nodeId: a3bfed37a30240fe9d3d20fa56816536
-  input: 0
-  speakerName: Zombi_1
-  inlineText: "\u0430\u0431\u0430\u0431\u0432\u0431\u0430\u0431\u0430\u0432"
+  speakerName: "\u0421\u043B\u0435\u043F\u043E\u0439 \u0437\u043E\u043C\u0431\u0438"
+  inlineText: "\u0413\u043E\u0432\u043E\u0440\u0438\u043B \u0436\u0435, \u043D\u0435\u0442
+    \u043D\u0443\u0436\u043D\u044B\u0445."
   tags: []
   speedMultiplier: 1
   eventKey: 

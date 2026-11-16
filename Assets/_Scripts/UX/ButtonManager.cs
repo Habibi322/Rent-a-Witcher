@@ -11,6 +11,7 @@ public class ButtonManager : MonoBehaviour
 
     [Header("Настройки")]
     [SerializeField] private string gameplaySceneName = "GameScene";
+    [SerializeField] private ContextDefaults contextDefaults;
 
     private const string SliderPrefix = "Setting_Slider_";
 
@@ -23,6 +24,14 @@ public class ButtonManager : MonoBehaviour
 
     public void OnPlayClicked()
     {
+        // Сбрасываем все контексты в дефолтные значения
+        if (contextDefaults != null && ContextBootstrapper.ContextSystem != null)
+        {
+            contextDefaults.ResetAll(ContextBootstrapper.ContextSystem);
+            Debug.Log("Все контексты сброшены!");
+        }
+
+        // Загружаем игровую сцену
         SceneManager.LoadScene(gameplaySceneName);
     }
 

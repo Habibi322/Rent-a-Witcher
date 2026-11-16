@@ -10,6 +10,8 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private GameObject interactPromptUI;
     [SerializeField] private PlayerMovement playerMovement;
 
+    private MultiNPCDialogue currentMultiNPC;
+
     private DialogueRunner runner;
 
     private void Start()
@@ -24,25 +26,59 @@ public class PlayerInteraction : MonoBehaviour
 
     public void TryInteract()
     {
+        if (currentMultiNPC != null && currentMultiNPC.CanInteract())
+        {
+            currentMultiNPC.Interact();
+            interactPromptUI.SetActive(false);
+            return;
+        }
+
+        // 1. СНАЧАЛА ПРОВЕРЯЕМ ЗАБОР (он в приоритете)
+        if (currentFence != null && currentFence.CanInteract())
+        {
+            currentFence.Interact();
+            interactPromptUI.SetActive(false);
+            return; // Выходим, чтобы не проверять других
+        }
+
+        // 2. Потом NPC
         if (currentNPC != null && currentNPC.CanInteract())
         {
             currentNPC.Interact();
             interactPromptUI.SetActive(false);
+            return;
         }
-        else if (currentItem != null)
+
+        // 3. Потом предметы
+        if (currentItem != null)
         {
             currentItem.Interact();
             interactPromptUI.SetActive(false);
-        }
-        else if (currentFence != null)
-        {
-            currentFence.Interact();
-            interactPromptUI.SetActive(false);
+            return;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        MultiNPCDialogue multiNpc = other.GetComponent<MultiNPCDialogue>();
+        if (multiNpc != null)
+        {
+            currentMultiNPC = multiNpc;
+            interactPromptUI.SetActive(multiNpc.CanInteract());
+            return;
+        }
+
+        // Сначала проверяем забор
+        FenceRepairSpot fence = other.GetComponent<FenceRepairSpot>();
+        if (fence != null)
+        {
+            currentFence = fence;
+            // Показываем панель ТОЛЬКО если забор разрешает взаимодействие
+            interactPromptUI.SetActive(fence.CanInteract());
+            return; // Выходим, чтобы не искать других
+        }
+
+        // Потом NPC
         NPCInteractable npc = other.GetComponent<NPCInteractable>();
         if (npc != null)
         {
@@ -51,24 +87,33 @@ public class PlayerInteraction : MonoBehaviour
             return;
         }
 
+        // Потом предметы
         ItemPickup item = other.GetComponent<ItemPickup>();
         if (item != null)
         {
             currentItem = item;
             interactPromptUI.SetActive(true);
         }
-
-        FenceRepairSpot fence = other.GetComponent<FenceRepairSpot>();
-        if (fence != null)
-        {
-            currentFence = fence;
-            interactPromptUI.SetActive(true);
-            return;
-        }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        MultiNPCDialogue multiNpc = other.GetComponent<MultiNPCDialogue>();
+        if (multiNpc != null && multiNpc == currentMultiNPC)
+        {
+            currentMultiNPC = null;
+            interactPromptUI.SetActive(false);
+        }
+
+        // Проверяем забор
+        FenceRepairSpot fence = other.GetComponent<FenceRepairSpot>();
+        if (fence != null && fence == currentFence)
+        {
+            currentFence = null;
+            interactPromptUI.SetActive(false);
+        }
+
+        // Проверяем NPC
         NPCInteractable npc = other.GetComponent<NPCInteractable>();
         if (npc != null && npc == currentNPC)
         {
@@ -76,17 +121,11 @@ public class PlayerInteraction : MonoBehaviour
             interactPromptUI.SetActive(false);
         }
 
+        // Проверяем предметы
         ItemPickup item = other.GetComponent<ItemPickup>();
         if (item != null && item == currentItem)
         {
             currentItem = null;
-            interactPromptUI.SetActive(false);
-        }
-
-        FenceRepairSpot fence = other.GetComponent<FenceRepairSpot>();
-        if (fence != null && fence == currentFence)
-        {
-            currentFence = null;
             interactPromptUI.SetActive(false);
         }
     }

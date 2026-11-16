@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro; // Для TextMeshPro
+using TMPro;
 
 public class FenceRepairSpot : MonoBehaviour
 {
@@ -9,11 +9,29 @@ public class FenceRepairSpot : MonoBehaviour
     [SerializeField] private int boardCount = 6; // Нужно 6 досок
 
     [Header("Текст подсказки")]
-    [SerializeField] private TMP_Text interactionText; // Сюда перетащите ваш текстовый объект
+    [SerializeField] private TMP_Text interactionText;
+
+    [Header("Спрайты забора")]
+    // Массив всех SpriteRenderer, которые относятся к забору (родитель и дети)
+    [SerializeField] private SpriteRenderer[] fenceRenderers;
+    [SerializeField] private Sprite brokenSprite;          // Спрайт сломанного забора
+    [SerializeField] private Sprite repairedSprite;        // Спрайт починенного забора
+
+    private void Start()
+    {
+        // Устанавливаем изначальный спрайт (сломанный) для всех частей
+        if (fenceRenderers != null && brokenSprite != null)
+        {
+            foreach (var sr in fenceRenderers)
+            {
+                if (sr != null) sr.sprite = brokenSprite;
+            }
+        }
+    }
 
     public void Interact()
     {
-        // Получаем стадию квеста (0 - не говорили, 1 - говорили)
+        // Получаем стадию квеста (0 - не говорили, 1 - говорили, 2 - выполнено)
         int currentStage = 0;
         if (ContextBootstrapper.ContextSystem.TryGetState(ContextKey.Quest_ZombieFenceStarted, out int state))
         {
@@ -63,15 +81,13 @@ public class FenceRepairSpot : MonoBehaviour
         }
     }
 
-    // Вспомогательный метод для показа текста
     private void ShowText(string message)
     {
         if (interactionText != null)
         {
             interactionText.text = message;
             interactionText.gameObject.SetActive(true);
-            // Можно добавить таймер, чтобы текст исчезал через 3 секунды
-            Invoke(nameof(HideText), 3f);
+            Invoke(nameof(HideText), 3f); // Текст исчезнет через 3 секунды
         }
     }
 
@@ -88,14 +104,34 @@ public class FenceRepairSpot : MonoBehaviour
         miniGamePanel.SetActive(false);
         playerMovement.canMove = true;
 
+        // Меняем спрайт на починенный У ВСЕХ частей забора
+        if (fenceRenderers != null && repairedSprite != null)
+        {
+            foreach (var sr in fenceRenderers)
+            {
+                if (sr != null) sr.sprite = repairedSprite;
+            }
+        }
+
+        // Ставим квест "выполнен"
         ContextBootstrapper.ContextSystem.TrySetState(ContextKey.Quest_ZombieFenceStarted, 2);
 
+        // Тратим доски
         InventorySystem inv = FindFirstObjectByType<InventorySystem>();
         if (inv != null) inv.RemoveItem(ContextKey.Item_Boards, boardCount);
     }
 
+    // Этот метод проверяет, можно ли сейчас взаимодействовать с забором
     public bool CanInteract()
     {
-        return true; // Разрешаем нажимать E всегда, чтобы увидеть текст
+        int currentStage = 0;
+        if (ContextBootstrapper.ContextSystem.TryGetState(ContextKey.Quest_ZombieFenceStarted, out int state))
+        {
+            currentStage = state;
+        }
+
+        // Возвращаем true, только если квест еще НЕ выполнен (стадия меньше 2)
+        // Если стадия 2 (забор починен), панель "E" не появится.
+        return currentStage < 2;
     }
 }
