@@ -31,3 +31,5 @@ MonoBehaviour:
     InitialValue: 0
   - Key: 40
     InitialValue: 0
+  - Key: 50
+    InitialValue: 1

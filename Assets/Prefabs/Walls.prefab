@@ -65,7 +65,7 @@ Transform:
   m_GameObject: {fileID: 328551420269425044}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 25.6, y: 0, z: 5.34}
+  m_LocalPosition: {x: -6.9, y: 0, z: 5.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -90,7 +90,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 4.35, z: 156.6}
+  m_Size: {x: 1, y: 4.35, z: 53.5}
   m_Center: {x: 0, y: 2, z: 0}
 --- !u!1 &1415858259855181467
 GameObject:
@@ -102,6 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6914068709241698602}
   - component: {fileID: 8423581692234043058}
+  - component: {fileID: 7114325816707844173}
   m_Layer: 0
   m_Name: 1 (2)
   m_TagString: Untagged
@@ -118,7 +119,7 @@ Transform:
   m_GameObject: {fileID: 1415858259855181467}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.43, y: 0, z: 0}
+  m_LocalPosition: {x: 8.01, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -139,12 +140,28 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 4, z: 36.7}
-  m_Center: {x: 0, y: 2, z: 0}
+  m_Size: {x: 1.494328, y: 4, z: 36.7}
+  m_Center: {x: -0.0038383007, y: 2, z: 0}
+--- !u!114 &7114325816707844173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415858259855181467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2abd6b6ef4d9619498569a5aad745eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BiomeTransition
+  teleportTarget: {fileID: 0}
+  fadePanel: {fileID: 0}
+  fadeDuration: 2.5
+  playerMovement: {fileID: 0}
 --- !u!1 &3158860715951840064
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +188,7 @@ Transform:
   m_GameObject: {fileID: 3158860715951840064}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.9, y: 0, z: 0}
+  m_LocalPosition: {x: 8.63, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -224,7 +241,7 @@ Transform:
   m_GameObject: {fileID: 4887156868319892148}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 71.81, y: 0, z: 0}
+  m_LocalPosition: {x: 80.95, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -436,7 +453,7 @@ Transform:
   m_GameObject: {fileID: 8247428605973540117}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 25.6, y: 0, z: -11.12}
+  m_LocalPosition: {x: 25.6, y: 0, z: -12.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

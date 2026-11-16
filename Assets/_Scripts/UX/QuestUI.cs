@@ -12,6 +12,7 @@ public class QuestUI : MonoBehaviour
     {
         if (ContextBootstrapper.ContextSystem != null)
         {
+            ContextBootstrapper.ContextSystem.SubscribeToContext(ContextKey.Quest_Intro, OnQuestChanged, true);
             // Подписка на квест с забором
             ContextBootstrapper.ContextSystem.SubscribeToContext(ContextKey.Quest_ZombieFenceStarted, OnQuestChanged, true);
             ContextBootstrapper.ContextSystem.SubscribeToContext(ContextKey.Item_Boards, OnQuestChanged, true);
@@ -43,6 +44,18 @@ public class QuestUI : MonoBehaviour
 
     private void UpdateQuestUI()
     {
+        // --- КВЕСТ 0: СТАРТОВЫЙ ---
+        int introStage = 0;
+        ContextBootstrapper.ContextSystem.TryGetState(ContextKey.Quest_Intro, out int intro);
+        introStage = intro;
+
+        if (introStage == 1)
+        {
+            questPanel.SetActive(true);
+            questTitleText.text = "НАЧАЛО ПУТИ"; // Или ваше название
+            questDescriptionText.text = "Узнайте, кто повесил объявление о помощи с забором"; // Ваш текст
+            return;
+        }
         // --- КВЕСТ 1: ЗАБОР ---
         int fenceStage = 0;
         ContextBootstrapper.ContextSystem.TryGetState(ContextKey.Quest_ZombieFenceStarted, out int fs);

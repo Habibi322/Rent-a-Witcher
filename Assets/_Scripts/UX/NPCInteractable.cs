@@ -78,6 +78,9 @@ public class NPCInteractable : MonoBehaviour
                     _currentGraph = firstDialogueGraph;
                     runner.Play(firstDialogueGraph);
                     ContextBootstrapper.ContextSystem.TrySetState(questStageKey, 1);
+
+                    // —брасываем стартовый квест, чтобы панель переключилась на забор
+                    ContextBootstrapper.ContextSystem.TrySetState(ContextKey.Quest_Intro, 0);
                 }
                 break;
             case 1:

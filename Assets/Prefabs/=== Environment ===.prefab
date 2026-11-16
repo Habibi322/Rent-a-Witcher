@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 7573385531982375649}
   - component: {fileID: 5526457690563195605}
   - component: {fileID: 111760839430757462}
+  - component: {fileID: 4349276384589819007}
   m_Layer: 0
   m_Name: Pipe
   m_TagString: Untagged
@@ -283,7 +284,7 @@ Transform:
   m_GameObject: {fileID: 971015645760525189}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 70.1, y: 0, z: 0.41}
+  m_LocalPosition: {x: 76.840004, y: 0, z: 2.35}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -338,12 +339,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -4061973034461623840, guid: 015a78b1b3eba704a8caf588c0e288da, type: 3}
+  m_Sprite: {fileID: 5763748695828756636, guid: 382fd2c999fde41408bfa8f8beb43435, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 37.962925, y: 12.92}
+  m_Size: {x: 16.83, y: 5.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -367,8 +368,24 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 36.327194, y: 8.100325, z: 2.0346315}
-  m_Center: {x: 1.230259, y: 2.18, z: 0.08064081}
+  m_Size: {x: 15.700388, y: 8.100325, z: 2.0346315}
+  m_Center: {x: 0.13450146, y: 2.18, z: 0.08064081}
+--- !u!114 &4349276384589819007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971015645760525189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f5e46a828ba94a4d82e73e69c02813c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pipe
+  spriteRenderer: {fileID: 5526457690563195605}
+  normalSprite: {fileID: 5763748695828756636, guid: 382fd2c999fde41408bfa8f8beb43435, type: 3}
+  weldedSprite: {fileID: 8512119860439684486, guid: 96ecc0f53a32741498f9309d3165156c, type: 3}
+  questStageKey: 40
 --- !u!1 &2576450517749304554
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,7 +659,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 8.269318, y: 8.100325, z: 2.0346315}
-  m_Center: {x: 0.025841296, y: -1.0698392, z: 0.08064084}
+  m_Center: {x: 0.025841296, y: 2.18, z: 0.08064084}
 --- !u!1 &4284507593492099161
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,8 +713,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 3.9514945, y: 8.468486, z: 2.5169942}
+  m_Center: {x: 0.34062237, y: -0.20678936, z: -0.7584958}
 --- !u!212 &4018586954567689930
 SpriteRenderer:
   serializedVersion: 2
@@ -747,8 +764,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: -6903214299472506634, guid: 5c16cd8a948f12045a213a0565a2dfa9, type: 3}
+  m_Color: {r: 0.8207547, g: 0.5953483, b: 0.31359026, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -756,7 +773,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &148991967140551240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1024,7 +1041,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!65 &8613002817638380776
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1286,7 +1303,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 8.041859, y: 7.691252, z: 2.2058284}
-  m_Center: {x: -0.034878254, y: -1.2743759, z: 0.40530562}
+  m_Center: {x: -0.034878254, y: 2.61, z: 0.40530562}
 --- !u!1 &7346692981201893430
 GameObject:
   m_ObjectHideFlags: 0
@@ -1299,6 +1316,7 @@ GameObject:
   - component: {fileID: 7635400222113174604}
   - component: {fileID: 2571991092511893021}
   - component: {fileID: 5777877809666168828}
+  - component: {fileID: 6112832079261651551}
   m_Layer: 0
   m_Name: FenceRepairSpot
   m_TagString: Untagged
@@ -1380,7 +1398,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!65 &2571991092511893021
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1400,8 +1418,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 9.781513, y: 4.6091967, z: 2.63885}
-  m_Center: {x: 0.41588464, y: 1.8045981, z: 0.3509441}
+  m_Size: {x: 18.375172, y: 4.177175, z: 8.654681}
+  m_Center: {x: 3.9395435, y: 1.5885825, z: 2.717618}
 --- !u!114 &5777877809666168828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1418,9 +1436,32 @@ MonoBehaviour:
   playerMovement: {fileID: 0}
   boardCount: 6
   interactionText: {fileID: 0}
-  fenceRenderers: []
-  brokenSprite: {fileID: 0}
-  repairedSprite: {fileID: 0}
+  fenceRenderers:
+  - {fileID: 7635400222113174604}
+  - {fileID: 4574201539661778430}
+  brokenSprite: {fileID: -4849910237843591755, guid: f40c981fcdf8aab45bfb987875e37306, type: 3}
+  repairedSprite: {fileID: -2914366113910211234, guid: 97e343e423f7cb54da85021ddcb6659a, type: 3}
+--- !u!65 &6112832079261651551
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7346692981201893430}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 9.781513, y: 4.6091967, z: 2.63885}
+  m_Center: {x: 0.34113008, y: 1.8045981, z: 0.5162186}
 --- !u!1 &7554521314271811563
 GameObject:
   m_ObjectHideFlags: 0
@@ -1448,8 +1489,8 @@ Transform:
   m_GameObject: {fileID: 7554521314271811563}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.37, y: 0, z: 1.77}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalPosition: {x: 69.73, y: 0, z: 1.43}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8584253116699351719}
@@ -1503,12 +1544,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 3198413410729557013, guid: 8c85129b5e1d3d0428a60d2876ffd6d8, type: 3}
+  m_Sprite: {fileID: -4061973034461623840, guid: 015a78b1b3eba704a8caf588c0e288da, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 21.557022, y: 13.009999}
+  m_Size: {x: 37.962925, y: 12.92}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1532,8 +1573,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 8.269318, y: 8.100325, z: 2.0346315}
-  m_Center: {x: 0.025841296, y: 2.18, z: 0.08064084}
+  m_Size: {x: 36.327194, y: 8.100325, z: 2.0346315}
+  m_Center: {x: 1.230259, y: 2.18, z: 0.08064081}
 --- !u!1 &7907252678325537554
 GameObject:
   m_ObjectHideFlags: 0
@@ -1547,6 +1588,7 @@ GameObject:
   - component: {fileID: 5976474594882635810}
   - component: {fileID: 3132892731888053126}
   - component: {fileID: 6969549816569616933}
+  - component: {fileID: 8138962819341603300}
   m_Layer: 0
   m_Name: Lizard
   m_TagString: Untagged
@@ -1563,7 +1605,7 @@ Transform:
   m_GameObject: {fileID: 7907252678325537554}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 77.21, y: 0, z: 2.35}
+  m_LocalPosition: {x: 76.66, y: 0, z: -0.11}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1618,12 +1660,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 5763748695828756636, guid: 382fd2c999fde41408bfa8f8beb43435, type: 3}
+  m_Sprite: {fileID: 32669139627539412, guid: a66e59e5ac754444f86cddc7cdae850a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 16.83, y: 5.56}
+  m_Size: {x: 20.03, y: 11.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1647,8 +1689,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 15.700388, y: 8.100325, z: 2.0346315}
-  m_Center: {x: 0.13450146, y: 2.18, z: 0.08064081}
+  m_Size: {x: 18.192024, y: 6.0760574, z: 3.6225965}
+  m_Center: {x: 0.21889368, y: 3.1921353, z: 0.87462324}
 --- !u!54 &3132892731888053126
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1689,6 +1731,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LizardInteractable
   questStageKey: 40
+--- !u!114 &8138962819341603300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7907252678325537554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b2b8901eb022454db51d1d478192346, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AardSign
+  signName: 
+  cooldown: 1
+  aardParticles: {fileID: 0}
+  aardManager: {fileID: 0}
 --- !u!1 &8028352055704550325
 GameObject:
   m_ObjectHideFlags: 0

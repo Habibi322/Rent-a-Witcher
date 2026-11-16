@@ -6,6 +6,8 @@ public enum ContextKey
     Dialog_ZombieTalked = 0,
     Dialog_NewBiomeTalked = 20,
     // Квесты (стадии)
+    //
+    Quest_Intro = 50,
     Quest_ZombieFenceStarted = 1,
     Quest_NewBiomeTaskStarted = 21,
 
