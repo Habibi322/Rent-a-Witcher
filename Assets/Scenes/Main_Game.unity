@@ -1360,6 +1360,11 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 7635400222113174604, guid: 0e67fb7388458ac4da4920a7141cebff, type: 3}
   m_PrefabInstance: {fileID: 7151617596427108103}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1391374229 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5961369985771640439, guid: 102c4e1d8492334428ddc0ff69dad590, type: 3}
+  m_PrefabInstance: {fileID: 4850359443659394886}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1461205998
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5572,6 +5577,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7342017297741468792, guid: 30fd186aa72812046bf1f1b3b6d675b1, type: 3}
+      propertyPath: interactPromptUI
+      value: 
+      objectReference: {fileID: 1391374229}
+    - target: {fileID: 8706188372274176267, guid: 30fd186aa72812046bf1f1b3b6d675b1, type: 3}
+      propertyPath: cinemachineCameraObject
+      value: 
+      objectReference: {fileID: 4439609373588702973}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6600,10 +6613,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 545872295051140140, guid: a7b5fcf12abba5648b02b94655e29353, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 773130230836563479, guid: a7b5fcf12abba5648b02b94655e29353, type: 3}
       propertyPath: runner
       value: 
       objectReference: {fileID: 333130294}
+    - target: {fileID: 797477060432348249, guid: a7b5fcf12abba5648b02b94655e29353, type: 3}
+      propertyPath: m_Size.x
+      value: 17.31841
+      objectReference: {fileID: 0}
+    - target: {fileID: 797477060432348249, guid: a7b5fcf12abba5648b02b94655e29353, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 797477060432348249, guid: a7b5fcf12abba5648b02b94655e29353, type: 3}
+      propertyPath: m_Center.x
+      value: -0.04312179
+      objectReference: {fileID: 0}
     - target: {fileID: 1576991369469852200, guid: a7b5fcf12abba5648b02b94655e29353, type: 3}
       propertyPath: m_Name
       value: === Zombi NPC ===
@@ -6646,6 +6675,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1687514415525055988, guid: a7b5fcf12abba5648b02b94655e29353, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7049717036485402913, guid: a7b5fcf12abba5648b02b94655e29353, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
