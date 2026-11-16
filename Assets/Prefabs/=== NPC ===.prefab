@@ -237,9 +237,9 @@ MonoBehaviour:
   runner: {fileID: 0}
   arrowManager: {fileID: 0}
   zombieRenderers:
-  - {fileID: 0}
-  - {fileID: 0}
-  parentRenderer: {fileID: 0}
+  - {fileID: 3935616389701543721}
+  - {fileID: 2701571017017906098}
+  parentRenderer: {fileID: 2622455441875294413}
   questStageKey: 1
 --- !u!65 &545872295051140140
 BoxCollider:
