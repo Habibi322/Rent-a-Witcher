@@ -1554,6 +1554,24 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &1778802514 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1406942081143109425, guid: 30fd186aa72812046bf1f1b3b6d675b1, type: 3}
+  m_PrefabInstance: {fileID: 3463680687300038319}
+  m_PrefabAsset: {fileID: 0}
+--- !u!210 &1778802517
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778802514}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
+  m_Sort3DAs2D: 0
 --- !u!1 &1849464583 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5036056828176028513, guid: 61dcc852d56a71f4ab8f74c902df77d0, type: 3}
@@ -5358,7 +5376,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1406942081143109425, guid: 30fd186aa72812046bf1f1b3b6d675b1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1778802517}
   m_SourcePrefab: {fileID: 100100000, guid: 30fd186aa72812046bf1f1b3b6d675b1, type: 3}
 --- !u!1 &3625847932323014676
 GameObject:
@@ -5642,6 +5663,7 @@ GameObject:
   - component: {fileID: 7006194578101244257}
   - component: {fileID: 8717047576207372812}
   - component: {fileID: 7466140178511391550}
+  - component: {fileID: 8717047576207372813}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -12647,6 +12669,18 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &8717047576207372813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4626924429526338532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a84c338b84519b4d964702c6f05d259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SortingSetup
 --- !u!65 &8915523652916102621
 BoxCollider:
   m_ObjectHideFlags: 0

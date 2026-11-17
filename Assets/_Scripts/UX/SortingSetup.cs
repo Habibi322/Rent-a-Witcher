@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class SortingSetup : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Camera cam = GetComponent<Camera>();
+        if (cam != null)
+        {
+            // ¬ключаем сортировку по пользовательской оси
+            cam.transparencySortMode = TransparencySortMode.CustomAxis;
+            // ”казываем, что сортировать нужно по Y (высоте)
+            cam.transparencySortAxis = new Vector3(0f, 1f, 0f);
+        }
     }
 }
