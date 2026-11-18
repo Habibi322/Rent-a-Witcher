@@ -16,11 +16,25 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Start()
     {
+        //runner = FindFirstObjectByType<DialogueRunner>();
+        //if (runner != null)
+        //{
+        //    runner.OnDialogueStarted.AddListener(() => playerMovement.canMove = false);
+        //    runner.OnDialogueFinished.AddListener(() => playerMovement.canMove = true);
+        //}
         runner = FindFirstObjectByType<DialogueRunner>();
-        if (runner != null)
+        if (runner != null && playerMovement != null)
         {
-            runner.OnDialogueStarted.AddListener(() => playerMovement.canMove = false);
-            runner.OnDialogueFinished.AddListener(() => playerMovement.canMove = true);
+            runner.OnDialogueStarted.AddListener(() =>
+            {
+                playerMovement.canMove = false;
+                playerMovement.canJump = false;   // <-- днаюбхрэ
+            });
+            runner.OnDialogueFinished.AddListener(() =>
+            {
+                playerMovement.canMove = true;
+                playerMovement.canJump = true;    // <-- днаюбхрэ
+            });
         }
     }
 

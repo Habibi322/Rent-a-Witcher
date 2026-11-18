@@ -16,7 +16,8 @@ public class PlayerMovement : MonoBehaviour
     private bool _isGrounded;
 
     //новое
-    [HideInInspector] public bool canMove = true;
+    [HideInInspector] public bool canMove = true; 
+    [HideInInspector] public bool canJump = true;
 
     private void Awake()
     {
@@ -30,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void TryJump()
     {
+        if (!canJump) return;
         if (_isGrounded)
         {
             _rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);

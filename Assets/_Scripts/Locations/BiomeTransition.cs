@@ -80,7 +80,24 @@ public class BiomeTransition : MonoBehaviour
         {
             Vector3 newPosition = teleportTarget.position;
             newPosition.y = playerTransform.position.y;
-            playerTransform.position = newPosition;
+            
+            Rigidbody playerRb = playerTransform.GetComponent<Rigidbody>();
+            if (playerRb != null)
+            {
+                // ќтключаем интерпол€цию на врем€ телепорта, чтобы не было "рывка"
+                var interpolate = playerRb.interpolation;
+                playerRb.interpolation = RigidbodyInterpolation.None;
+
+                playerRb.position = newPosition;          // <-- главное изменение
+                playerRb.linearVelocity = Vector3.zero;   // сбрасываем скорость
+                playerRb.angularVelocity = Vector3.zero;
+
+                playerRb.interpolation = interpolate;
+            }
+            else
+            {
+                playerTransform.position = newPosition;
+            }
         }
 
         // 4. ѕлавное осветление

@@ -475,6 +475,7 @@ GameObject:
   m_Component:
   - component: {fileID: 89079167973641993}
   - component: {fileID: 3802364212618557933}
+  - component: {fileID: 8843541920933543709}
   m_Layer: 5
   m_Name: MusicSoundSlider
   m_TagString: Untagged
@@ -555,6 +556,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8843541920933543709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610218036191969177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bba7ee45b87c39c46af5e53b7c5277af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioSlider
+  mixer: {fileID: 24100000, guid: e8dcb5e677fc13c48bd2b83eae5da525, type: 2}
+  parameterName: MusicVol
 --- !u!1 &677358051816081554
 GameObject:
   m_ObjectHideFlags: 0
@@ -1709,6 +1724,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3181586604990065689}
   - component: {fileID: 6731936763871332483}
+  - component: {fileID: 5429827122252283038}
   m_Layer: 5
   m_Name: SFXSoundSlider
   m_TagString: Untagged
@@ -1789,6 +1805,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5429827122252283038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2277349883966571484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bba7ee45b87c39c46af5e53b7c5277af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioSlider
+  mixer: {fileID: 24100000, guid: e8dcb5e677fc13c48bd2b83eae5da525, type: 2}
+  parameterName: SFXVol
 --- !u!1 &2402548853689464666
 GameObject:
   m_ObjectHideFlags: 0
@@ -4042,6 +4072,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5319530440382390016}
   - component: {fileID: 8390372480693091683}
+  - component: {fileID: 5750282357103527531}
   m_Layer: 5
   m_Name: MainSoundSlider
   m_TagString: Untagged
@@ -4122,6 +4153,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5750282357103527531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5619629275922956380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bba7ee45b87c39c46af5e53b7c5277af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioSlider
+  mixer: {fileID: 24100000, guid: e8dcb5e677fc13c48bd2b83eae5da525, type: 2}
+  parameterName: MainVol
 --- !u!1 &5650359531205818886
 GameObject:
   m_ObjectHideFlags: 0
